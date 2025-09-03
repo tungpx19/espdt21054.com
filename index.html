@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bộ DIY Loa Thông Báo Chuyển Khoản ESP32 BLK</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1>Bộ DIY Loa Thông Báo Chuyển Khoản ESP32 BLK</h1>
+  </div>
+</header>
+
+<main>
+  <section id="so-do" class="section container">
+    <h3>3) Kiến trúc & Nối dây</h3>
+    <div class="diagram" aria-label="Sơ đồ minh hoạ">
+      <svg viewBox="0 0 400 300" width="100%" height="100%">
+        <rect x="160" y="120" width="80" height="40" rx="6" fill="#667eea" stroke="#333" />
+        <text x="200" y="145" text-anchor="middle" fill="white" font-size="14">ESP32</text>
+
+        <rect x="40" y="40" width="80" height="30" rx="5" fill="#333" stroke="#000" />
+        <text x="80" y="60" text-anchor="middle" fill="white" font-size="12">OLED</text>
+        <line x1="160" y1="130" x2="120" y2="55" stroke="#333" stroke-width="2" />
+
+        <circle cx="120" cy="240" r="20" fill="#333" />
+        <text x="120" y="245" text-anchor="middle" fill="white" font-size="12">I2S</text>
+        <line x1="160" y1="150" x2="120" y2="240" stroke="#333" stroke-width="2" />
+
+        <rect x="280" y="200" width="90" height="40" rx="5" fill="#764ba2" stroke="#000" />
+        <text x="325" y="225" text-anchor="middle" fill="white" font-size="12">MAX98357</text>
+        <line x1="200" y1="160" x2="280" y2="220" stroke="#333" stroke-width="2" />
+
+        <circle cx="360" cy="80" r="30" fill="#999" stroke="#000" />
+        <text x="360" y="85" text-anchor="middle" fill="black" font-size="12">Loa</text>
+        <line x1="325" y1="200" x2="360" y2="110" stroke="#333" stroke-width="2" />
+      </svg>
+    </div>
+  </section>
+
+  <section id="demo" class="section container">
+    <h3>5) Demo giả lập Webhook</h3>
+    <form id="demo-form" class="demo-form">
+      <label for="amount">Số tiền (VND)</label>
+      <input id="amount" name="amount" inputmode="numeric" required>
+      <button class="btn primary" type="submit">Gửi sự kiện</button>
+      <button class="btn" id="replay" type="button" disabled>Phát lại</button>
+    </form>
+
+    <div class="announce">
+      <div class="oled-sim">
+        <div class="row"><span>Thông báo gần nhất:</span> <strong id="last-msg">—</strong></div>
+      </div>
+      <div class="mascot" aria-live="polite">
+        <div class="face">^(^◕‿◕^)^</div>
+        <p id="mascot-line">Chào bạn! Mình là Loa BLK ✨</p>
+        <button class="btn" id="mute-toggle" type="button" aria-pressed="false">Tắt tiếng</button>
+      </div>
+    </div>
+
+    <audio id="notify-sound" src="notify.mp3" preload="auto"></audio>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
